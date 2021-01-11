@@ -1,0 +1,65 @@
+/* velicina za male telefone, iphone 4-5, od 0 do 500px */
+@media only screen and (max-width: 500px){
+
+}
+
+/* velicina za malo vece telefone i manje tablete 501 do 767 */
+@media only screen and (max-width: 767px){
+    body{ font-size: 16px;}
+    section{ paddting: 30px 0;}
+
+    .row,
+    .hero-text-box{ padding: 0 4%;}
+
+    .col{ width: 100%;}    
+    
+    .long-copy{
+        width: 100%;
+        margin-left: 0%;
+    }
+
+    h1{font-size: 180%;}
+    h2{font-size: 150%;}
+
+    .works-step{ margin-bottom: 20px;}
+    .works-step:last-of-type { margin-bottom: 20px}
+}
+
+/* velicina za vece telefone i tablete */
+@media only screen and (max-width: 1023px){
+    body{ font-size: 18px; }
+    section { padding: 60px 0;}
+    .long-copy{
+        width: 80%;
+        margin-left: 10%;
+    }
+    .steps-box{ margin-top: 10px;}
+    .steps-box:last-child { margin-top: 10px;}
+    .works-step{ margin-bottom: 40px;}
+    .works-step:last-of-type { margin-bottom: 60px}
+    
+    .appscreen { width: 50% }
+
+    .icon-small{ 
+        width: 17px;
+        margin-right: 5px;
+     }
+    .city-feature{ font-size: 90%;}
+
+    .plan-box{
+        width: 100%;
+        margin-left: 0%;
+    }
+    .plan-price{ font-size: 250%;}
+
+    .contact-form{ width: 80%;}
+}
+
+/* velicina za veci ipad i kompjutere */
+@media only screen and (max-width: 1200px){     /* row klasa je 1240?? */
+    .hero-text-box{                                             /* da se centrira ovaj naslov */
+        width: 100%;
+        padding: 0 2%;
+    }
+    .row{ padding: 0 2%; }
+}

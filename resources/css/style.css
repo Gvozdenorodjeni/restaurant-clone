@@ -1,0 +1,535 @@
+/*-----------------------------------------------------*/
+/*
+-u resources fajlovi koje smo mi napravili, vendors su sa interneta.
+-normalize.css da css izgleda isto u svim brouzerima, treba da se skine i ubaci u vendors. link za njega ide pre svih.
+-google fonts ukljucijemo. kopirati link i izabrati fontove.
+-grid.css ubaciti u vendors. link za njega posebno u html-u. (1-of-3, 1-of-2,..svaka grupa ovih kolona je row)
+-h1 mora margin 0, jer slika nece ici gore do kraja ekrana
+- 0to255.com  ZA nijanse boja od svetlije ka tamnijoj
+-ion icons prebacene u vendors css i ucitane
+*/
+/*-----------------------------------------------------*/
+
+
+
+
+
+/*-----------------------------------------------------*/
+/*BASIC SETUP*/
+/*-----------------------------------------------------*/
+*{/* pre svega ovo, margin i padding 0; i border-box */
+    margin: 0;  
+    padding: 0;
+    box-sizing: border-box;
+}
+html
+body{
+    background-color: white;
+    color: #555;                                        /* boja teksta za ceo projekat */
+    font-family: 'Lato', 'Arial', sans-serif;             /* lato smo skinuli, arial je difolt, sens...bilo koji! */
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;                   /* za font renderovanje */
+    overflow-x: hidden;                         /* na malim ekranima da se sakrije linija za levo-desno, posto se pojavi */
+}
+.clearfix{zoom:1}
+.clearfix:after{
+    content:'.';
+    clear:both;
+    display:block;
+    height:0;
+    visibility:hidden;
+}
+/*-----------------------------------------------------*/
+/*REUSABLE COMPONENTS*/
+/*-----------------------------------------------------*/
+
+.row{
+    max-width: 1140px;                                     /* jedino je ovo definisano u pixelima */
+    margin: 0 auto;/* da centrira kontejner leva i desna margina auto, ovo moze i 0 auto 0 auto (top, right, bottom, left */
+}
+section{
+    padding: 80px 0;                /* koristi padding zbog background color, gore dole 80px, 0 levo i desno */            
+}
+.box{
+    padding: 1%;
+}
+.row:before,
+.row::after{
+    content: '';
+    display: table;
+}
+.row::after{
+    clear: both;
+}
+/*-----------------------------------------------------*/
+/*GRID OF FOUR*/
+/*-----------------------------------------------------*/
+.span-4-of-4{
+    width: 100%;
+}
+.span-3-of-4{
+    width: 74.6%;
+}
+.span-2-of-4{
+    width: 49.2%;
+}
+.span-1-of-4{
+    width: 23.8%;
+}
+/*-----------------------------------------------------*/
+/*HEADINGS*/
+/*-----------------------------------------------------*/
+h1, 
+h2,
+h3{
+    font-weight: 300;                                       /* za bold */
+    text-transform: uppercase;                              /* sva slova velika */
+}
+h1{
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 240%;
+    word-spacing: 3px;                                      /* razmak izmedju reci */
+    letter-spacing: 1px;                                    /* razmak izmedju slova */
+}
+h2{
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h2::after{                                                   /* AFTER-  ISPOD H2 CE BITI LINIJA OPISANA */
+    content: ' ';                                           /* CONTENT MORA OBAVEZNO UZ AFTER PSEUDO KLASU  */
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    width: 100px;
+    margin: 0 auto;                                             /* da se centrira */
+    margin-top: 30px;
+}
+h3{
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+/*-----------------------------------------------------*/
+/*PARAGRAPHS*/
+/*-----------------------------------------------------*/
+.long-copy{
+    line-height: 145%;                                      /* treba da bude izmedju 120 i 145% - razmak izmedju linija*/
+    width: 70%;                                             /* duzina linije */
+    margin-left: 15%;                                       /* 70%, i 15% levo, 15 desno da bude centrirano */
+}
+.box p{
+    font-size: 90%;
+    line-height: 145%;
+}
+/*-----------------------------------------------------*/
+/*FEATURES*/
+/*-----------------------------------------------------*/
+.section-features .long-copy{
+    margin-bottom: 30px;
+}
+/*-----------------------------------------------------*/
+/*ICONS*/
+/*-----------------------------------------------------*/
+.icon-big{
+    font-size: 350%;
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+.icon-small{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color:  #e67e22;
+    font-size: 120%;
+    /*secrets to align text and icons*/                     /* ! ! ! */
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 10px;
+} 
+/*-----------------------------------------------------*/
+/*LINKS*/
+/*-----------------------------------------------------*/
+a:link,
+a:visited{
+    color:  #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid  #e67e22;
+    transition: border-bottom 0.2s, color 0.2s;
+}
+a:hover,
+a:active{
+    color: #555;
+    border-bottom: 1px solid transparent;
+}
+/*-----------------------------------------------------*/
+/*BUTTONS*/
+/*-----------------------------------------------------*/
+
+/* button states- link (kako izgleda u normalnom stanju),visited, active (kada kliknemo),  hover, */
+
+.btn:link,                                    /* kada je ovako link, visited, znaci da se ne menja kad kliknemo na njega */
+.btn:visited,
+input[type=submit]{
+    display: inline-block;                               /* kao inline, samo moze da se doda npr padding,width, height... */
+    padding: 10px 30px;                                  /* top bott. 10px, 30px levo i desno???proveriti */
+    font-weight: 300;
+    text-decoration: none;                               /* da se skloni underline ili tacke npr. */
+    border-radius: 200px;                         /* da budu zakrivljene ivice  */
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]{
+    background-color: #e67e22;                          /* boja dugmeta */ 
+    border: 1px solid #e67e22;
+    color: #fff;                                        /* boja teksta */
+    margin-right: 15px;
+}
+.btn-ghost:link,
+.btn-ghost:visited{
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active{
+    background-color: #cf6d17;
+}
+.btn-full:hover,
+.btn-full:active{
+    color:1px solid #e67e22;
+}
+.btn-ghost:hover,
+.btn-ghost:active{
+    border: 1px solid #e67e22;
+    color: #fff;
+}
+
+/*-----------------------------------------------------*/
+/*HEADER*/
+/*-----------------------------------------------------*/
+header{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero.jpg); /* ovo prvo da bude tamnija */
+    height: 100vh;                                          /* 100% od view porta, inace ne bi bila preko celog hedera */
+    background-size: cover;                                 /* da se vidi cela slika a ne zumirana */
+    background-position: center;                            /* da bude u centru */
+    background-attachment: fixed;
+}
+.hero-text-box{                                             /* da se centrira ovaj naslov */
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.logo{
+    height: 100px;                                          /* visinu definisemo, sirina auto */
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 60px;
+}
+.main-nav li {
+    display: inline-block;                                      /* da butu jedan pored drugog  */
+    margin-left: 40px;
+}
+.main-nav li a:link,                                            /* ovo su linkovi */
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;               /* ovde je transparent, kada je hover onda se  pojavi */
+    transition: border-bottom 0.2s;
+}
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid  #e67e22;
+}
+/*-----------------------------------------------------*/
+/*MEALS*/
+/*-----------------------------------------------------*/
+.section-meals{
+    padding: 0;
+}
+.section-steps{
+    background-color: #f4f4f4;
+}
+.meals-showcase{
+    list-style: none;                           /* za buletpoints */
+    width: 100%;                                /* celom duzinom ekrana */
+}
+.meals-showcase li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+.meal-photo{
+    width: 100%;
+    margin: 0;
+    overflow: hidden;                           /* ovo je da slika kada je zumirana (scale), ne izlazi iz ekrana */
+    background-color: #000;                 /* sa opaciti bez ovog je belo mnogo */
+}
+.meal-photo img{
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+    transform: scale(1.15);                     /* slika ce biti 115% velika...zumirana */
+    transition: transform 0.5s, opacity 0.5s;
+}
+.meal-photo img:hover{
+    opacity: 1;
+    transform: scale(1.03);                     /* stavio je 1.3 da se ne bi pojavila bela linija izmedju slika */
+}
+
+/*-----------------------------------------------------*/
+/*HOW IT WORKS*/
+/*-----------------------------------------------------*/
+.section-steps{
+    background-color: #f4f4f4;
+}
+.steps-box{
+    margin-top: 30px;
+}
+.steps-box:first-child{                             /* pseudo klasa, bira prvi od dva step-boxes */
+    text-align: right;                              /* radi za sve inline elemente */
+    padding-right: 3%;                              /* zbog responzivnosti % */
+}
+.steps-box:last-child{                              /* pseudo klasa, bira poslednji od dva step-boxes */    
+    text-align: left;
+    padding-left: 3%;
+    margin-top: 40px;
+}
+.app-screen{
+    width: 40%;
+}
+.works-step{
+    margin-bottom: 50px;                            
+}
+.works-step:last-of-type{                       /* slicno kao last child */
+    margin-bottom: 80px;
+}
+.works-step div{
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    display: inline-block;                          /* da broj bude pored teksta???? */
+    border-radius: 50%;
+    height: 55px;                                   /* visina i sirina moraju da budu isti da bi bio krug */
+    width: 55px;
+    text-align: center; 
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+.btn-app:link,
+btn-app:visited{
+    border: 0;
+}
+.btn-app img{
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+/*-----------------------------------------------------*/
+/*CITIES*/
+/*-----------------------------------------------------*/
+.box img{                                               
+    width: 100%;                                             /* da bude siroka kao box */
+    height: auto;
+    margin-bottom: 15px;
+}
+.city-feature{
+    margin-bottom: 5px;
+}
+/*-----------------------------------------------------*/
+/*TESTIMONIALS*/
+/*-----------------------------------------------------*/
+.section-testimonials{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8) ,rgba(0, 0, 0, 0.8)),  url(img/back-customers.jpg);
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;                      /* da se fiksira dok se skroluje */
+}
+
+blockquote{
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;
+    margin-top: 40px;
+}
+blockquote:before{                    /* pefor je da se nesto pojavi pre teksta ili nekog bloka, kao after za liniju */
+    content: "\201C";                   /* ISO special caracter */
+    font-size: 500%;
+    display: block;                 /* da bude u novoj liniji */
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+cite{
+    font-size: 90%;
+    margin-top: 25%;
+    display: block;
+}
+cite img{
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;                         /* da slika i tekst udu u liniji */
+}
+/*-----------------------------------------------------*/
+/*SIGN UP*/
+/*-----------------------------------------------------*/
+.section-plans{
+    background-color: #f4f4f4;
+}
+.plan-box{
+    background-color: #fff;
+    border-radius: 5px;
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 0 2px 2px #efefef;
+}
+.plan-box div{
+    padding: 15px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+.plan-box div:first-child{
+    background-color: #fcfcfc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.plan-box div:last-child{
+    text-align: center;
+    border: none;
+}
+.plan-price{
+    font-size: 300%;
+    margin-bottom: 10px;
+    font-weight: 100;
+    color: #e67e22;
+
+}
+.plan-price span{
+    font-size: 30%;
+    font-weight: 300;
+}
+.plan-price-meal{
+    font-size: 80%;
+}
+.plan-box ul{
+    list-style: none;
+}
+.plan-box ul li{
+    padding: 5px 0;
+}
+
+/*-----------------------------------------------------*/
+/*CONTACT FORM*/
+/*-----------------------------------------------------*/
+
+.contact-form{
+    width: 60%;
+    margin: 0 auto;
+}
+input[type=text],
+input[type=email],
+select,
+textarea{
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc; 
+}
+textarea{
+    height: 100px;
+}
+input[type=checkbox]{
+    margin: 10px 5px 10px 0;
+}
+*:focus{outline:none;}
+
+/*-----------------------------------------------------*/
+/*FOOTER*/
+/*-----------------------------------------------------*/
+
+footer{
+    background-color: #333;
+    padding: 40px;
+    font-size: 80%;
+}
+.footer-nav{
+    list-style: none;
+    float:left
+}
+.social-links{
+    list-style: none;
+    float: right;
+}
+.footer-nav li,
+.social-links li{
+    display: inline-block;
+    margin-right: 20px;
+}
+.footer-nav li:last-child,
+.social-links li:last-child{
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited{
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    transition: color 0.2s;
+}
+.footer-nav li a:hover,
+.footer-nav li a:active{
+    color: #ddd;
+}
+footer p {
+    color: #888;
+    text-align: center;
+    font-size: 90%;
+    margin-top: 30px;
+}
+.social-links li a:link,
+.social-links li a:visited{
+    font-size: 160%;
+}
+.ion-social-facebook,
+.ion-social-twitter,
+.ion-social-googleplus,
+.ion-social-instagram{
+    transition: color 0.2s;
+}
+.ion-social-facebook:hover{
+    color: #3b5998;
+}
+.ion-social-twitter:hover{
+    color: #00aced;
+}
+.ion-social-googleplus:hover{
+    color: #dd4b39;
+}
+.ion-social-instagram:hover{
+    color: #517fa4;
+}
